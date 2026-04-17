@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEIC 900+ — La méthode de Mélissa Ouedraogo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+
+:root {
+  --cream: #FAF9F6;
+  --white: #FFFFFF;
+  --ink: #1A1917;
+  --ink-2: #4A4845;
+  --ink-3: #9A9890;
+  --ink-4: #D8D6CE;
+  --gold: #C9872A;
+  --gold-2: #E8A84A;
+  --gold-bg: #FDF6EC;
+  --gold-border: #EDD5A3;
+  --blue: #1B5FA8;
+  --blue-bg: #EBF2FC;
+  --blue-border: #AECBF0;
+  --green: #1D9E75;
+  --green-bg: #EDF8F4;
+  --green-border: #B8E6D6;
+  --red: #C0392B;
+  --red-bg: #FDEEEC;
+  --border: #E8E6DE;
+  --shadow: 0 1px 3px rgba(26,25,23,0.06), 0 4px 16px rgba(26,25,23,0.04);
+  --shadow-lg: 0 8px 40px rgba(26,25,23,0.10);
+  --nav-h: 64px;
+}
+
+body { font-family:'Outfit',sans-serif; background:var(--cream); color:var(--ink); line-height:1.7; overflow-x:hidden; }
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--cream); }
+::-webkit-scrollbar-thumb { background:var(--gold); border-radius:2px; }
+
+/* ── TOPNAV ── */
+.topnav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  height:var(--nav-h);
+  background:rgba(250,249,246,0.93);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 40px;
+  transition:box-shadow 0.3s;
+}
+.topnav.scrolled { box-shadow:var(--shadow); }
+.nav-brand {
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px; font-weight:700; color:var(--ink);
+  display:flex; align-items:center; gap:8px;
+}
+.nav-brand span { color:var(--gold); }
+.nav-links { display:flex; align-items:center; gap:2px; list-style:none; }
+.nav-links a {
+  font-size:12.5px; font-weight:500; color:var(--ink-2);
+  text-decoration:none; padding:6px 12px; border-radius:20px;
+  transition:all 0.2s; cursor:pointer;
+}
+.nav-links a:hover, .nav-links a.active { color:var(--gold); background:var(--gold-bg); }
+.score-badge {
+  display:flex; align-items:center; gap:8px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px; font-weight:500; color:var(--gold);
+  background:var(--gold-bg); border:1px solid var(--gold-border);
+  padding:6px 14px; border-radius:20px;
+}
+
+/* ── READING BAR ── */
+.reading-bar { position:fixed; top:var(--nav-h); left:0; right:0; height:2px; z-index:199; }
+.reading-bar-fill { height:100%; background:var(--gold); width:0%; transition:width 0.1s linear; }
+
+/* ── HERO ── */
+.hero {
+  min-height:100vh;
+  display:grid; grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:calc(var(--nav-h) + 60px) 80px 60px;
+  gap:80px; position:relative; overflow:hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute; top:-200px; right:-200px;
+  width:700px; height:700px;
+  background:radial-gradient(circle, rgba(201,135,42,0.08) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero::after {
+  content:'930';
+  position:absolute; bottom:-40px; left:60px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:280px; font-weight:700;
+  color:rgba(201,135,42,0.04); line-height:1;
+  pointer-events:none; user-select:none;
+}
+.hero-eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:12px; font-weight:600; letter-spacing:0.14em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:24px;
+}
+.hero-eyebrow::before { content:''; display:block; width:28px; height:1.5px; background:var(--gold); }
+.hero-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,5.5vw,78px);
+  font-weight:700; line-height:1.05; margin-bottom:8px;
+}
+.hero-title em { font-style:italic; color:var(--gold); }
+.hero-subtitle {
+  font-size:17px; color:var(--ink-2); line-height:1.65;
+  margin-bottom:40px; max-width:430px; font-weight:300;
+}
+.hero-actions { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.btn-primary {
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--ink); color:#fff;
+  padding:14px 28px; border-radius:40px;
+  font-size:14px; font-weight:600; border:none; cursor:pointer;
+  transition:all 0.25s; text-decoration:none;
+}
+.btn-primary:hover { background:var(--gold); transform:translateY(-2px); box-shadow:0 8px 24px rgba(201,135,42,0.3); }
+.btn-outline {
+  display:inline-flex; align-items:center; gap:8px;
+  border:1.5px solid var(--border); color:var(--ink-2);
+  padding:14px 24px; border-radius:40px;
+  font-size:14px; font-weight:500; background:none; cursor:pointer;
+  transition:all 0.25s;
+}
+.btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+.hero-meta { display:flex; gap:36px; margin-top:48px; padding-top:40px; border-top:1px solid var(--border); }
+.meta-num { font-family:'Cormorant Garamond',serif; font-size:38px; font-weight:700; color:var(--gold); line-height:1; }
+.meta-label { font-size:12px; color:var(--ink-3); margin-top:4px; font-weight:500; }
+
+/* Hero right */
+.score-card {
+  background:var(--white); border-radius:24px; padding:36px;
+  box-shadow:var(--shadow-lg); border:1px solid var(--border);
+  position:relative;
+}
+.score-card-title { font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-3); margin-bottom:28px; }
+.score-display { display:flex; align-items:center; justify-content:center; margin-bottom:32px; }
+.score-circle {
+  width:160px; height:160px; border-radius:50%;
+  background:conic-gradient(var(--gold) 0deg, var(--gold) 337deg, var(--border) 337deg);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 24px rgba(201,135,42,0.2);
+  position:relative;
+}
+.score-circle::before {
+  content:''; position:absolute; inset:12px; border-radius:50%;
+  background:var(--white);
+}
+.score-inner {
+  position:relative; text-align:center;
+}
+.score-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:52px; font-weight:700; color:var(--gold); line-height:1;
+}
+.score-max { font-size:13px; color:var(--ink-3); font-weight:500; }
+.score-breakdown { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.score-part {
+  background:var(--cream); border-radius:12px; padding:18px;
+  border:1px solid var(--border);
+}
+.score-part-label { font-size:11px; font-weight:600; color:var(--ink-3); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px; }
+.score-part-num { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; color:var(--ink); }
+.score-part-max { font-size:12px; color:var(--ink-3); }
+.score-verdict {
+  margin-top:16px; padding:14px 18px;
+  background:var(--gold-bg); border:1px solid var(--gold-border);
+  border-radius:10px; font-size:13px; color:var(--gold);
+  font-weight:600; text-align:center;
+}
+
+/* ── PAGE WRAP ── */
+.page-wrap { max-width:1200px; margin:0 auto; padding:0 40px; }
+
+/* ── CHAPTER ── */
+.chapter-section {
+  padding:100px 0; border-top:1px solid var(--border);
+  opacity:0; transform:translateY(30px);
+  transition:opacity 0.7s ease, transform 0.7s ease;
+}
+.chapter-section.visible { opacity:1; transform:none; }
+.chapter-layout { display:grid; grid-template-columns:220px 1fr; gap:80px; align-items:start; }
+.chapter-num { font-family:'Cormorant Garamond',serif; font-size:96px; font-weight:700; color:var(--ink-4); line-height:0.9; margin-bottom:20px; user-select:none; }
+.chapter-tag { display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.chapter-sidebar-title { font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:600; color:var(--ink); line-height:1.3; }
+.chapter-headline { font-family:'Cormorant Garamond',serif; font-size:clamp(34px,3.5vw,50px); font-weight:700; line-height:1.1; color:var(--ink); margin-bottom:20px; }
+.chapter-headline em { font-style:italic; color:var(--gold); }
+.chapter-lead { font-size:17px; color:var(--ink-2); line-height:1.7; margin-bottom:48px; padding-left:20px; border-left:2px solid var(--gold); font-weight:300; }
+.prose { font-size:16px; color:var(--ink-2); line-height:1.85; }
+.prose p { margin-bottom:22px; }
+.prose strong { color:var(--ink); font-weight:600; }
+
+.section-h { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; color:var(--ink); margin:52px 0 24px; display:flex; align-items:center; gap:16px; }
+.section-h::after { content:''; flex:1; height:1px; background:var(--border); }
+
+/* ── STAT GRID ── */
+.stat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:28px 0; }
+.stat-card {
+  background:var(--white); border:1px solid var(--border); border-radius:16px;
+  padding:24px 20px; text-align:center; transition:all 0.25s;
+}
+.stat-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-3px); border-color:var(--gold-border); }
+.stat-card-num { font-family:'Cormorant Garamond',serif; font-size:40px; font-weight:700; color:var(--gold); line-height:1; margin-bottom:6px; }
+.stat-card-label { font-size:12px; color:var(--ink-3); font-weight:500; line-height:1.4; }
+
+/* ── PART CARDS ── */
+.part-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:28px 0; }
+.part-card {
+  border-radius:16px; padding:28px 24px; border:1px solid;
+  transition:all 0.25s;
+}
+.part-card.listening { background:var(--blue-bg); border-color:var(--blue-border); }
+.part-card.reading { background:var(--gold-bg); border-color:var(--gold-border); }
+.part-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+.part-card-type { font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:8px; }
+.part-card.listening .part-card-type { color:var(--blue); }
+.part-card.reading .part-card-type { color:var(--gold); }
+.part-card-title { font-size:20px; font-weight:700; color:var(--ink); margin-bottom:12px; }
+.part-card-desc { font-size:14px; color:var(--ink-2); line-height:1.65; }
+.part-sub { margin-top:16px; display:flex; flex-direction:column; gap:8px; }
+.part-sub-item { display:flex; align-items:center; gap:10px; font-size:13px; color:var(--ink-2); }
+.part-sub-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+.listening .part-sub-dot { background:var(--blue); }
+.reading .part-sub-dot { background:var(--gold); }
+
+/* ── TIPS CARDS ── */
+.tips-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:28px 0; }
+.tip-card {
+  background:var(--white); border:1px solid var(--border);
+  border-radius:14px; padding:24px;
+  position:relative; overflow:hidden; transition:all 0.25s;
+}
+.tip-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform 0.3s; }
+.tip-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-2px); }
+.tip-card:hover::before { transform:scaleX(1); }
+.tip-icon { font-size:28px; margin-bottom:14px; }
+.tip-title { font-size:16px; font-weight:600; color:var(--ink); margin-bottom:8px; }
+.tip-desc { font-size:14px; color:var(--ink-2); line-height:1.65; }
+
+/* ── ACCORDION ── */
+.accordion { display:flex; flex-direction:column; gap:8px; margin:24px 0; }
+.acc-item { background:var(--white); border:1px solid var(--border); border-radius:14px; overflow:hidden; transition:border-color 0.2s, box-shadow 0.2s; }
+.acc-item.open { border-color:var(--gold-border); box-shadow:0 0 0 3px var(--gold-bg); }
+.acc-trigger { display:flex; align-items:center; gap:16px; padding:20px 24px; cursor:pointer; user-select:none; }
+.acc-num { width:36px; height:36px; border-radius:50%; background:var(--cream); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:500; color:var(--ink-2); flex-shrink:0; transition:all 0.2s; }
+.acc-item.open .acc-num { background:var(--gold); color:#fff; border-color:var(--gold); }
+.acc-label { flex:1; font-weight:600; font-size:15px; color:var(--ink); }
+.acc-meta { font-size:12px; color:var(--ink-3); }
+.acc-icon { color:var(--ink-4); transition:transform 0.25s; font-size:18px; }
+.acc-item.open .acc-icon { transform:rotate(45deg); color:var(--gold); }
+.acc-body { display:none; padding:0 24px 22px 76px; border-top:1px solid var(--border); padding-top:18px; font-size:14.5px; color:var(--ink-2); line-height:1.75; }
+.acc-item.open .acc-body { display:block; }
+
+/* ── CALLOUTS ── */
+.callout { display:flex; gap:18px; background:var(--green-bg); border:1px solid var(--green-border); border-radius:14px; padding:22px 24px; margin:28px 0; }
+.callout-icon { font-size:22px; flex-shrink:0; line-height:1.4; }
+.callout-text { font-size:15px; color:var(--ink-2); line-height:1.7; }
+.callout-text strong { color:var(--green); font-weight:600; }
+.warning-box { display:flex; gap:18px; background:var(--red-bg); border:1px solid #F0B8B3; border-radius:14px; padding:22px 24px; margin:28px 0; }
+.warning-box .callout-text { font-size:14.5px; color:#7A2620; }
+.warning-box .callout-text strong { color:var(--red); }
+.gold-box { display:flex; gap:18px; background:var(--gold-bg); border:1px solid var(--gold-border); border-radius:14px; padding:22px 24px; margin:28px 0; }
+.gold-box .callout-text { font-size:15px; color:var(--ink-2); line-height:1.7; }
+.gold-box .callout-text strong { color:var(--gold); font-weight:600; }
+
+/* ── PULL QUOTE ── */
+.pull-quote { font-family:'Cormorant Garamond',serif; font-size:26px; font-style:italic; font-weight:600; color:var(--ink); line-height:1.4; padding:28px 36px; border-left:4px solid var(--gold); margin:40px 0; background:var(--white); border-radius:0 16px 16px 0; }
+
+/* ── PLAN TABLE ── */
+.plan-table { width:100%; border-collapse:collapse; margin:24px 0; }
+.plan-table th { background:var(--ink); color:#fff; font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:14px 20px; text-align:left; }
+.plan-table th:first-child { border-radius:12px 0 0 0; }
+.plan-table th:last-child { border-radius:0 12px 0 0; }
+.plan-table td { padding:14px 20px; font-size:14px; color:var(--ink-2); border-bottom:1px solid var(--border); background:var(--white); }
+.plan-table tr:last-child td { border-bottom:none; }
+.plan-table tr:last-child td:first-child { border-radius:0 0 0 12px; }
+.plan-table tr:last-child td:last-child { border-radius:0 0 12px 0; }
+.plan-table tr:hover td { background:var(--gold-bg); }
+.week-badge { display:inline-block; background:var(--gold-bg); color:var(--gold); border:1px solid var(--gold-border); font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; }
+
+/* ── MISTAKE CARDS ── */
+.mistake-grid { display:grid; grid-template-columns:1fr; gap:12px; margin:24px 0; }
+.mistake-card { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:22px 24px; display:flex; gap:20px; align-items:flex-start; transition:all 0.2s; }
+.mistake-card:hover { border-color:var(--red); box-shadow:0 0 0 3px var(--red-bg); }
+.mistake-x { width:32px; height:32px; border-radius:50%; background:var(--red-bg); color:var(--red); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0; }
+.mistake-content {}
+.mistake-title { font-size:15px; font-weight:600; color:var(--ink); margin-bottom:6px; }
+.mistake-desc { font-size:14px; color:var(--ink-2); line-height:1.65; }
+.mistake-fix { margin-top:8px; font-size:13px; color:var(--green); font-weight:500; }
+
+/* ── RESOURCES ── */
+.resources-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+.resource-card { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:22px; transition:all 0.25s; }
+.resource-card:hover { border-color:var(--gold-border); box-shadow:var(--shadow); transform:translateY(-2px); }
+.resource-type { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-3); margin-bottom:8px; }
+.resource-name { font-size:16px; font-weight:600; color:var(--ink); margin-bottom:6px; }
+.resource-desc { font-size:13.5px; color:var(--ink-2); line-height:1.6; }
+.resource-badge { display:inline-block; font-size:10px; font-weight:700; padding:3px 8px; border-radius:10px; margin-top:10px; }
+.badge-free { background:var(--green-bg); color:var(--green); }
+.badge-paid { background:var(--gold-bg); color:var(--gold); }
+
+/* ── CHAPTER NAV ── */
+.chap-nav { display:flex; justify-content:space-between; align-items:center; margin-top:72px; padding-top:40px; border-top:1px solid var(--border); }
+.chap-nav-btn { display:inline-flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--ink-2); cursor:pointer; border:1.5px solid var(--border); background:var(--white); padding:12px 22px; border-radius:40px; transition:all 0.25s; text-decoration:none; }
+.chap-nav-btn:hover { border-color:var(--gold); color:var(--gold); box-shadow:0 0 0 3px var(--gold-bg); }
+.chap-nav-btn.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+.chap-nav-btn.next:hover { background:var(--gold); border-color:var(--gold); box-shadow:0 4px 20px rgba(201,135,42,0.3); }
+
+/* ── FOOTER ── */
+.site-footer { background:var(--ink); color:rgba(255,255,255,0.5); padding:60px 40px; text-align:center; }
+.footer-name { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:700; color:#fff; margin-bottom:8px; }
+.footer-title { font-size:14px; margin-bottom:8px; }
+.footer-score { font-family:'JetBrains Mono',monospace; font-size:24px; font-weight:500; color:var(--gold); margin-bottom:24px; }
+.footer-note { font-size:13px; max-width:440px; margin:0 auto; line-height:1.7; }
+
+@media (max-width:900px) {
+  .hero { grid-template-columns:1fr; padding:120px 24px 60px; }
+  .hero-visual { display:none; }
+  .chapter-layout { grid-template-columns:1fr; gap:32px; }
+  .chapter-num { font-size:64px; }
+  .nav-links { display:none; }
+  .topnav { padding:0 20px; }
+  .page-wrap { padding:0 20px; }
+  .chapter-section { padding:60px 0; }
+  .stat-grid { grid-template-columns:1fr 1fr; }
+  .part-grid { grid-template-columns:1fr; }
+  .tips-grid { grid-template-columns:1fr; }
+  .resources-grid { grid-template-columns:1fr; }
+}
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
+@keyframes scaleIn { from { opacity:0; transform:scale(0.96); } to { opacity:1; transform:none; } }
+.hero-eyebrow { animation:fadeUp 0.6s 0.1s both; }
+.hero-title    { animation:fadeUp 0.7s 0.2s both; }
+.hero-subtitle { animation:fadeUp 0.7s 0.35s both; }
+.hero-actions  { animation:fadeUp 0.7s 0.45s both; }
+.hero-meta     { animation:fadeUp 0.7s 0.55s both; }
+.hero-visual   { animation:scaleIn 0.8s 0.3s both; }
+</style>
+</head>
+<body>
+
+<div class="reading-bar"><div class="reading-bar-fill" id="readBar"></div></div>
+
+<!-- TOPNAV -->
+<nav class="topnav" id="topnav">
+  <div class="nav-brand">TOEIC <span>900+</span></div>
+  <ul class="nav-links">
+    <li><a onclick="scrollTo('hero')">Accueil</a></li>
+    <li><a onclick="scrollTo('ch1')">Le test</a></li>
+    <li><a onclick="scrollTo('ch2')">Plan d'attaque</a></li>
+    <li><a onclick="scrollTo('ch3')">Listening</a></li>
+    <li><a onclick="scrollTo('ch4')">Reading</a></li>
+    <li><a onclick="scrollTo('ch5')">Vocabulaire</a></li>
+    <li><a onclick="scrollTo('ch6')">Erreurs fatales</a></li>
+    <li><a onclick="scrollTo('ch7')">Sprint final</a></li>
+    <li><a onclick="scrollTo('bonus')">Bonus</a></li>
+  </ul>
+  <div class="score-badge">✦ Score : 930 / 990</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div>
+    <div class="hero-eyebrow">Guide certifié par l'expérience · 2026</div>
+    <h1 class="hero-title">TOEIC<br><em>900+</em><br>La méthode.</h1>
+    <p class="hero-subtitle">J'ai obtenu 930/990 sans coaching coûteux, depuis Ouagadougou. Voici exactement comment — avec toutes les erreurs à éviter.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="scrollTo('ch1')">
+        Lire la méthode
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <button class="btn-outline" onclick="scrollTo('ch2')">Voir le plan 90 jours</button>
+    </div>
+    <div class="hero-meta">
+      <div><div class="meta-num">930</div><div class="meta-label">mon score</div></div>
+      <div><div class="meta-num">90</div><div class="meta-label">jours de prep</div></div>
+      <div><div class="meta-num">7</div><div class="meta-label">chapitres</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="score-card">
+      <div class="score-card-title">Mon résultat officiel</div>
+      <div class="score-display">
+        <div class="score-circle">
+          <div class="score-inner">
+            <div class="score-num">930</div>
+            <div class="score-max">/ 990</div>
+          </div>
+        </div>
+      </div>
+      <div class="score-breakdown">
+        <div class="score-part">
+          <div class="score-part-label">🎧 Listening</div>
+          <div class="score-part-num">470</div>
+          <div class="score-part-max">/ 495</div>
+        </div>
+        <div class="score-part">
+          <div class="score-part-label">📖 Reading</div>
+          <div class="score-part-num">460</div>
+          <div class="score-part-max">/ 495</div>
+        </div>
+      </div>
+      <div class="score-verdict">✓ Niveau C1 — Professionnel bilingue</div>
+    </div>
+  </div>
+</section>
+
+<div class="page-wrap">
+
+<!-- ══ CHAPITRE 1 ══ -->
+<section id="ch1" class="chapter-section">
+  <div class="chapter-layout">
+    <div class="chapter-sidebar">
+      <div class="chapter-num">01</div>
+      <div class="chapter-tag">Comprendre</div>
+      <div class="chapter-sidebar-title">Ce que le TOEIC mesure vraiment</div>
+    </div>
+    <div class="chapter-body">
+      <h2 class="chapter-headline">Avant de réviser,<br>comprends<br><em>ce que tu passes.</em></h2>
+      <p class="chapter-lead">La première erreur de 80% des candidats : réviser sans comprendre la structure exacte du test. Le TOEIC n'est pas un examen d'anglais scolaire — c'est un test de communication professionnelle.</p>
+
+      <div class="prose">
+        <p>Le TOEIC (Test of English for International Communication) est conçu par ETS pour mesurer ton niveau d'anglais dans un contexte professionnel et quotidien. Pas de littérature, pas de grammaire théorique abstraite — des situations réelles : emails d'entreprise, réunions, annonces d'aéroport, publicités.</p>
+        <p>Cette nuance change tout dans ta façon de préparer. <strong>Tu ne prépares pas un examen académique. Tu prépares une simulation de vie professionnelle en anglais.</strong></p>
+      </div>
+
+      <div class="section-h">La structure officielle</div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-card-num">200</div>
+          <div class="stat-card-label">questions au total</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">120'</div>
+          <div class="stat-card-label">durée du test</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">990</div>
+          <div class="stat-card-label">points maximum</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">5pts</div>
+          <div class="stat-card-label">par bonne réponse</div>
+        </div>
+      </div>
+
+      <div class="part-grid">
+        <div class="part-card listening">
+          <div class="part-card-type">🎧 Partie 1 — Listening</div>
+          <div class="part-card-title">Compréhension orale</div>
+          <div class="part-card-desc">100 questions · 45 minutes · 495 points</div>
+          <div class="part-sub">
+            <div class="part-sub-item"><div class="part-sub-dot"></div>Part 1 — Photos (6 questions)</div>
+            <div class="part-sub-item"><div class="part-sub-dot"></div>Part 2 — Questions-réponses (25 questions)</div>
+            <div class="part-sub-item"><div class="part-sub-dot"></div>Part 3 — Conversations (39 questions)</div>
+            <div class="part-sub-item"><div class="part-sub-dot"></div>Part 4 — Monologues (30 questions)</div>
+          </div>
+        </div>
+        <div class="part-card reading">
+          <div class="part-card-type">📖 Partie 2 — Reading</div>
+          <div class="part-card-title">Compréhension écrite</div>
+          <div class="part-card-desc">100 questions · 75 minutes · 495 points</div>
+          <div class="part-sub">
+            <div class="part-sub-item"><div class="part-sub-dot"></div>Part 5 — Phrases incomplètes (30 questions)</div>
+            <div class="part-sub-item"><div class="part-sub-dot"></div>Part 6 — Textes incomplets (16 questions)</div>
+            <div class="part-sub-item"><div class="part-sub-dot"></div>Part 7 — Lecture de documents (54 questions)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-h">Décoder le score</div>
+
+      <div class="prose">
+        <p>Le score TOEIC ne correspond pas à un nombre de bonnes réponses fixe. ETS utilise une <strong>table de conversion</strong> qui varie légèrement selon les sessions. Ce qu'il faut retenir : pour atteindre 900+, tu peux te permettre environ 18 erreurs réparties sur les 200 questions. Ça paraît peu — mais c'est largement atteignable avec la bonne méthode.</p>
+      </div>
+
+      <div class="gold-box">
+        <div class="callout-icon">🎯</div>
+        <div class="callout-text"><strong>Le seuil magique :</strong> La différence entre 800 et 900 n'est pas une question de niveau d'anglais — c'est une question de <strong>stratégie de test</strong>. Beaucoup de candidats maîtrisent l'anglais mais ratent des points à cause de mauvaises habitudes de lecture ou d'écoute. Ce guide corrige exactement ça.</div>
+      </div>
+
+      <div class="chap-nav">
+        <span></span>
+        <button class="chap-nav-btn next" onclick="scrollTo('ch2')">Chapitre 2 — Plan d'attaque →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPITRE 2 ══ -->
+<section id="ch2" class="chapter-section">
+  <div class="chapter-layout">
+    <div class="chapter-sidebar">
+      <div class="chapter-num">02</div>
+      <div class="chapter-tag">Stratégie</div>
+      <div class="chapter-sidebar-title">Le plan d'attaque 90 jours</div>
+    </div>
+    <div class="chapter-body">
+      <h2 class="chapter-headline">Pas de révision<br>au hasard.<br><em>Un plan. Point.</em></h2>
+      <p class="chapter-lead">La préparation sans structure c'est comme marcher en forêt sans boussole — tu te fatigues, tu tournes en rond, et tu n'arrives nulle part. Voici le plan qui m'a permis de passer de zéro préparation formelle à 930 en 90 jours.</p>
+
+      <div class="prose">
+        <p>90 jours, c'est la durée idéale. Assez long pour construire des réflexes solides, assez court pour maintenir l'intensité. En dessous de 60 jours c'est possible, mais stressant. Au-dessus de 4 mois, tu risques de perdre le fil.</p>
+      </div>
+
+      <div class="section-h">Les 3 phases</div>
+
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Durée</th>
+            <th>Focus</th>
+            <th>Objectif</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="week-badge">Phase 1</span></td>
+            <td>Semaines 1–4</td>
+            <td>Diagnostic + bases solides</td>
+            <td>Identifier ses points faibles exacts</td>
+          </tr>
+          <tr>
+            <td><span class="week-badge">Phase 2</span></td>
+            <td>Semaines 5–10</td>
+            <td>Entraînement intensif par section</td>
+            <td>Maîtriser chaque type de question</td>
+          </tr>
+          <tr>
+            <td><span class="week-badge">Phase 3</span></td>
+            <td>Semaines 11–13</td>
+            <td>Tests complets + correction</td>
+            <td>Construire l'endurance et la vitesse</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-h">Ta semaine type</div>
+
+      <div class="accordion">
+        <div class="acc-item open">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">L</div>
+            <div class="acc-label">Lundi — Listening intensif</div>
+            <div class="acc-meta">45–60 min</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">Commence la semaine par l'écoute. Fais 2 sets de Part 3 ou Part 4, corrige immédiatement, et lis les transcripts des passages que tu n'as pas compris. Note les expressions récurrentes.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">M</div>
+            <div class="acc-label">Mardi — Vocabulaire et expressions</div>
+            <div class="acc-meta">30–45 min</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">Révise les 20 mots de la veille avec Anki. Ajoute 20 nouveaux mots du vocabulaire business TOEIC. Fais 10 questions de Part 5 (phrases incomplètes) pour ancrer les structures grammaticales.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">J</div>
+            <div class="acc-label">Jeudi — Reading intensif</div>
+            <div class="acc-meta">60–75 min</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">Un set complet de Part 7 (documents multiples). Entraîne-toi à localiser l'information rapidement sans tout lire. Chronométre-toi — la vitesse est essentielle en Part 7.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">S</div>
+            <div class="acc-label">Samedi — Test blanc partiel</div>
+            <div class="acc-meta">90–120 min</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">Une moitié de test complet (Listening ou Reading en entier). Conditions réelles : chronométre, pas de pause, pas de dictionnaire. Analyse tes erreurs le dimanche.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">D</div>
+            <div class="acc-label">Dimanche — Révision et anglais plaisir</div>
+            <div class="acc-meta">30–45 min</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">Corrige le test du samedi en détail. Puis 20 minutes d'anglais "plaisir" : une série, un podcast, un film. Ce temps-là n'est pas du loisir — c'est de l'exposition naturelle à la langue, indispensable.</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-icon">💡</div>
+        <div class="callout-text"><strong>La règle des 3 semaines :</strong> Il faut au minimum 21 jours de pratique régulière pour que ton cerveau commence à traiter l'anglais comme un réflexe plutôt qu'une traduction. Ne juge pas tes progrès avant la semaine 4.</div>
+      </div>
+
+      <div class="chap-nav">
+        <button class="chap-nav-btn" onclick="scrollTo('ch1')">← Chapitre 1</button>
+        <button class="chap-nav-btn next" onclick="scrollTo('ch3')">Chapitre 3 — Listening →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPITRE 3 ══ -->
+<section id="ch3" class="chapter-section">
+  <div class="chapter-layout">
+    <div class="chapter-sidebar">
+      <div class="chapter-num">03</div>
+      <div class="chapter-tag">Listening</div>
+      <div class="chapter-sidebar-title">Les secrets de la partie écoute</div>
+    </div>
+    <div class="chapter-body">
+      <h2 class="chapter-headline">Le Listening<br>ne s'écoute pas.<br><em>Il s'anticipe.</em></h2>
+      <p class="chapter-lead">Le plus grand mythe du TOEIC Listening : "il faut juste bien écouter." Faux. La clé, c'est ce que tu fais AVANT que l'audio commence. J'ai gagné 30 points en Listening rien qu'en changeant cette habitude.</p>
+
+      <div class="section-h">Les tips par section</div>
+
+      <div class="accordion">
+        <div class="acc-item open">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">P1</div>
+            <div class="acc-label">Part 1 — Photos</div>
+            <div class="acc-meta">6 questions · La plus facile à scorer</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">
+            <strong>Avant l'audio :</strong> Regarde la photo et identifie mentalement : qui (personne/objet), quoi (action), où (lieu), état (debout, assis, etc.).<br><br>
+            <strong>Piège classique :</strong> Les mauvaises réponses décrivent souvent des éléments visuellement présents mais avec une action incorrecte. Ex : la photo montre une femme à côté d'une voiture — la mauvaise réponse dit "She is driving a car." Elle est là, mais elle ne conduit pas.<br><br>
+            <strong>Mots déclencheurs :</strong> Attention aux constructions passives ("is being repaired") et aux positions ("next to", "in front of").
+          </div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">P2</div>
+            <div class="acc-label">Part 2 — Questions-réponses</div>
+            <div class="acc-meta">25 questions · La plus tricky psychologiquement</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">
+            <strong>Le piège du son identique :</strong> ETS adore mettre des réponses qui contiennent un mot similaire à la question. Si la question dit "Where is the meeting?", une mauvaise réponse dira "We're meeting tomorrow." Tu entends "meeting" et tu choisis — erreur.<br><br>
+            <strong>Stratégie :</strong> Identifie le mot interrogatif (Who/What/Where/When/Why/How) et filtre immédiatement les réponses incohérentes. Une réponse à "Who?" avec un lieu = automatiquement fausse.<br><br>
+            <strong>Réponses indirectes :</strong> Le TOEIC adore les réponses qui ne répondent pas directement. "When does the meeting start?" → "I haven't checked the agenda." C'est souvent la bonne réponse.
+          </div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">P3</div>
+            <div class="acc-label">Part 3 — Conversations</div>
+            <div class="acc-meta">39 questions · Lis les questions AVANT</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">
+            <strong>La technique d'anticipation :</strong> Pendant que les instructions sont données au début, lis les 3 questions du premier set. Pendant que l'audio joue, tu sais exactement quoi chercher. Ne lis pas tout le texte — identifie juste les mots clés.<br><br>
+            <strong>Ce que tu cherches :</strong> Lieu de la conversation, relation entre les interlocuteurs, problème évoqué, décision prise, prochaine étape.<br><br>
+            <strong>Le mot de fin :</strong> La réponse à la troisième question est souvent dans la dernière phrase de la conversation. Reste concentré jusqu'au bout.
+          </div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">P4</div>
+            <div class="acc-label">Part 4 — Monologues</div>
+            <div class="acc-meta">30 questions · Annonces, messages, publicités</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">
+            <strong>Reconnais le type de texte :</strong> Annonce d'aéroport, message vocal, publicité radio, présentation d'entreprise, bulletin météo. Chaque type a une structure prévisible. Une fois que tu sais que c'est une annonce d'aéroport, tu sais que l'information sera : vol → destination → porte → heure.<br><br>
+            <strong>Les chiffres et noms propres :</strong> Note-les mentalement ou sur le brouillon autorisé. Les questions portent souvent sur des numéros, dates, ou noms spécifiques.<br><br>
+            <strong>Accents variés :</strong> Le TOEIC inclut des accents américain, britannique, australien, et canadien. Expose-toi à tous pendant ta préparation.
+          </div>
+        </div>
+      </div>
+
+      <div class="section-h">Tips transversaux — Listening</div>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">🎧</div>
+          <div class="tip-title">Écoute active quotidienne</div>
+          <div class="tip-desc">30 min d'anglais natif par jour minimum. Podcasts business (BBC Business Daily, CNBC), séries sans sous-titres. L'oreille doit s'habituer à la vitesse réelle de la langue.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📝</div>
+          <div class="tip-title">Les transcripts comme outil</div>
+          <div class="tip-desc">Après chaque exercice raté, lis le transcript. Identifie exactement ce que tu n'as pas compris : liaison de mots, accent, vitesse, vocabulaire inconnu. Traite la cause, pas le symptôme.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">⏱️</div>
+          <div class="tip-title">Pas de retour en arrière</div>
+          <div class="tip-desc">Au TOEIC, l'audio passe une seule fois. Entraîne-toi sans jamais réécouter. Si tu rates une réponse, passe à la suivante immédiatement. Ruminer une question ratée te fait rater les suivantes.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🌍</div>
+          <div class="tip-title">Vocabulaire business ciblé</div>
+          <div class="tip-desc">Le TOEIC utilise environ 3 000 mots récurrents. Les thèmes : finance, RH, marketing, voyage d'affaires, logistique, immobilier. Concentre ton vocab là-dessus — pas sur le vocabulaire littéraire.</div>
+        </div>
+      </div>
+
+      <div class="pull-quote">"Mon déclic en Listening : j'ai arrêté de traduire mentalement et j'ai commencé à penser directement en images."</div>
+
+      <div class="chap-nav">
+        <button class="chap-nav-btn" onclick="scrollTo('ch2')">← Chapitre 2</button>
+        <button class="chap-nav-btn next" onclick="scrollTo('ch4')">Chapitre 4 — Reading →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPITRE 4 ══ -->
+<section id="ch4" class="chapter-section">
+  <div class="chapter-layout">
+    <div class="chapter-sidebar">
+      <div class="chapter-num">04</div>
+      <div class="chapter-tag">Reading</div>
+      <div class="chapter-sidebar-title">Maîtriser la partie lecture</div>
+    </div>
+    <div class="chapter-body">
+      <h2 class="chapter-headline">Le Reading<br>se gagne<br><em>à la vitesse.</em></h2>
+      <p class="chapter-lead">75 minutes pour 100 questions. Ça fait 45 secondes par question en moyenne. Le candidat qui lit tout ne peut pas finir. Celui qui sait quoi lire — et quoi sauter — termine avec du temps de reste.</p>
+
+      <div class="section-h">Par section</div>
+
+      <div class="accordion">
+        <div class="acc-item open">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">P5</div>
+            <div class="acc-label">Part 5 — Phrases incomplètes</div>
+            <div class="acc-meta">30 questions · Grammaire + vocabulaire · Max 30 sec/question</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">
+            <strong>Le principe :</strong> Une phrase avec un blanc, 4 options. Tu dois choisir le bon mot ou la bonne forme grammaticale.<br><br>
+            <strong>Stratégie de tri rapide :</strong><br>
+            1. Regarde les 4 options — si elles ont la même racine (employ / employee / employment / employed), c'est une question de forme grammaticale. Analyse le contexte syntaxique.<br>
+            2. Si les 4 options sont des mots différents, c'est une question de sens. Lis la phrase pour le sens.<br><br>
+            <strong>Les pièges classiques :</strong> Confusion entre les formes verbales (participe présent vs passé), confusion prépositions (in/on/at + temps), adverbes vs adjectifs ("recent" vs "recently").
+          </div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">P6</div>
+            <div class="acc-label">Part 6 — Textes incomplets</div>
+            <div class="acc-meta">16 questions · 4 textes · Cohérence du discours</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">
+            <strong>La différence avec la Part 5 :</strong> Ici il y a 4 blancs dans un même texte. Un des 4 blancs est toujours une phrase entière à choisir — la "phrase de cohérence." C'est la plus difficile mais aussi la plus logique si tu lis le contexte.<br><br>
+            <strong>Pour la phrase entière :</strong> Lis la phrase avant ET après le blanc. La bonne réponse est celle qui crée une transition logique entre les deux.<br><br>
+            <strong>Attention aux connecteurs :</strong> "However", "Therefore", "In addition", "As a result" — ces mots t'indiquent la relation logique attendue.
+          </div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">P7</div>
+            <div class="acc-label">Part 7 — Lecture de documents</div>
+            <div class="acc-meta">54 questions · La plus chronophage · Priorité stratégique</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">
+            <strong>Ne lis JAMAIS le document entier en premier.</strong> Lis d'abord les questions, identifie les mots-clés, puis va chercher ces mots dans le document. Tu économises 60 à 70% du temps de lecture.<br><br>
+            <strong>Les types de documents :</strong> Emails, lettres, publicités, offres d'emploi, graphiques, formulaires, articles de presse. Chaque type a une structure prévisible — les informations importantes sont toujours aux mêmes endroits.<br><br>
+            <strong>Documents multiples :</strong> Les 10 derniers sets (3–5 documents liés) sont les plus complexes. Réserve du temps. La réponse à une question peut nécessiter d'croiser des infos de deux documents différents.<br><br>
+            <strong>Gestion du temps :</strong> Vise 1 min pour les documents simples (email court), 3 min pour les sets doubles, 5 min pour les sets triples.
+          </div>
+        </div>
+      </div>
+
+      <div class="section-h">Tips transversaux — Reading</div>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">⚡</div>
+          <div class="tip-title">Le Skimming et le Scanning</div>
+          <div class="tip-desc">Skimming = lire en diagonale pour l'idée générale. Scanning = chercher une information précise (un nom, une date, un chiffre). Entraîne-toi à basculer entre les deux rapidement.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🔢</div>
+          <div class="tip-title">Gérer le temps à rebours</div>
+          <div class="tip-desc">Part 5 : 15 minutes max. Part 6 : 10 minutes. Part 7 : 50 minutes. Regarde ton chrono à chaque transition. Si tu es en retard sur la Part 5, accélère — ne laisse pas le temps s'évaporer sur les questions faciles.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">❓</div>
+          <div class="tip-title">Questions "NOT" — piège absolu</div>
+          <div class="tip-desc">Les questions du type "What is NOT mentioned?" sont les plus piègeuses. Lis toutes les options avant de répondre. Une réponse qui semble vraie peut être dans le texte — et ce n'est donc PAS la bonne réponse.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📰</div>
+          <div class="tip-title">Lire en anglais chaque jour</div>
+          <div class="tip-desc">BBC News, Reuters, Harvard Business Review version simplifiée. 15 minutes de lecture quotidienne améliore ta vitesse de compréhension et ancre naturellement le vocabulaire business récurrent du TOEIC.</div>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-text"><strong>Ne laisse AUCUNE case vide.</strong> Il n'y a pas de pénalité pour les mauvaises réponses au TOEIC. Si tu ne sais pas, devines — et élimine d'abord les options clairement absurdes pour augmenter tes chances à 1/2 ou 1/3.</div>
+      </div>
+
+      <div class="chap-nav">
+        <button class="chap-nav-btn" onclick="scrollTo('ch3')">← Chapitre 3</button>
+        <button class="chap-nav-btn next" onclick="scrollTo('ch5')">Chapitre 5 — Vocabulaire →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPITRE 5 ══ -->
+<section id="ch5" class="chapter-section">
+  <div class="chapter-layout">
+    <div class="chapter-sidebar">
+      <div class="chapter-num">05</div>
+      <div class="chapter-tag">Vocabulaire</div>
+      <div class="chapter-sidebar-title">La méthode intelligente</div>
+    </div>
+    <div class="chapter-body">
+      <h2 class="chapter-headline">3 000 mots<br>suffisent.<br><em>Lesquels ?</em></h2>
+      <p class="chapter-lead">Pas besoin de mémoriser un dictionnaire entier. Le TOEIC utilise un vocabulaire prévisible, centré sur des contextes professionnels récurrents. La stratégie intelligente : apprendre les bons mots, pas tous les mots.</p>
+
+      <div class="section-h">Les 8 thèmes incontournables</div>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">✈️</div>
+          <div class="tip-title">Voyage et transport</div>
+          <div class="tip-desc">Itinerary, layover, boarding gate, carry-on, check-in, delay, departure, arrival, customs, reservation, cancellation, refund.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🏢</div>
+          <div class="tip-title">Bureau et entreprise</div>
+          <div class="tip-desc">Headquarters, subsidiary, merger, acquisition, quarterly report, fiscal year, budget, deadline, agenda, minutes (PV), conference call.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📦</div>
+          <div class="tip-title">Commerce et logistique</div>
+          <div class="tip-desc">Invoice, shipment, inventory, supplier, vendor, warranty, defective, replacement, tracking number, freight, customs clearance.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">👥</div>
+          <div class="tip-title">Ressources humaines</div>
+          <div class="tip-desc">Recruitment, résumé, interview, appraisal, promotion, resignation, severance, benefits, maternity leave, probation period, salary.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🏠</div>
+          <div class="tip-title">Immobilier et locaux</div>
+          <div class="tip-desc">Lease, tenant, landlord, property, renovation, maintenance, utilities, square footage, deposit, zoning, commercial space.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">💰</div>
+          <div class="tip-title">Finance et comptabilité</div>
+          <div class="tip-desc">Revenue, profit, loss, balance sheet, cash flow, dividend, interest rate, loan, collateral, audit, reimbursement, expense report.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📢</div>
+          <div class="tip-title">Marketing et communication</div>
+          <div class="tip-desc">Campaign, brochure, launch, target audience, market share, brand awareness, testimonial, survey, feedback, promotion, discount.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🍽️</div>
+          <div class="tip-title">Restauration et événements</div>
+          <div class="tip-desc">Reservation, banquet, catering, venue, reception, menu, dietary restrictions, seating arrangement, registration, keynote, attendee.</div>
+        </div>
+      </div>
+
+      <div class="section-h">La méthode Anki pour le TOEIC</div>
+
+      <div class="prose">
+        <p>Anki est une application de flashcards avec un algorithme de répétition espacée — tu révises les mots que tu oublies plus souvent, et ceux que tu maîtrises moins souvent. C'est scientifiquement prouvé comme la méthode la plus efficace pour mémoriser du vocabulaire.</p>
+        <p><strong>Mon protocole :</strong> 20 nouvelles cartes par jour, 10 minutes de révision des anciennes. Jamais plus, jamais moins. La régularité bat l'intensité.</p>
+      </div>
+
+      <div class="gold-box">
+        <div class="callout-icon">💡</div>
+        <div class="callout-text"><strong>Le secret des collocations :</strong> Apprends les mots en contexte, pas isolément. Pas juste "report" — mais "file a report", "annual report", "report to someone", "report on something". Le TOEIC teste les collcoations autant que les définitions.</div>
+      </div>
+
+      <div class="section-h">Grammaire — les 5 points critiques</div>
+
+      <div class="accordion">
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">01</div>
+            <div class="acc-label">Les temps verbaux</div>
+            <div class="acc-meta">Present perfect vs simple past — erreur #1</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">Le TOEIC teste constamment la différence entre "I have sent" (résultat présent) et "I sent" (moment passé précis). Règle : présence d'un marqueur de temps précis (yesterday, last week, in 2020) → simple past. Pas de marqueur ou "already/yet/just" → present perfect.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">02</div>
+            <div class="acc-label">Les prépositions de temps</div>
+            <div class="acc-meta">In / On / At — tricky mais prévisible</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">AT pour les heures (at 3pm, at noon, at night) et les moments précis. ON pour les jours et dates (on Monday, on January 15th). IN pour les périodes (in the morning, in January, in 2026). Exception mémorable : "at night" mais "in the evening".</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">03</div>
+            <div class="acc-label">Les formes verbales</div>
+            <div class="acc-meta">Participes, gérondifs et infinitifs</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">Verbes suivis d'un infinitif (want/need/agree to do) vs verbes suivis d'un gérondif (enjoy/avoid/consider doing). La Part 5 teste ça constamment. Mémorise les deux listes — elles sont courtes et très rentables.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">04</div>
+            <div class="acc-label">Adjectifs vs adverbes</div>
+            <div class="acc-meta">Modification du nom ou du verbe</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">L'adjectif modifie un nom (a recent update), l'adverbe modifie un verbe ou adjectif (recently updated). Piège classique : "The project was completed successful" → "successfully." Le TOEIC teste ça au moins 2 fois par test.</div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">05</div>
+            <div class="acc-label">Les connecteurs logiques</div>
+            <div class="acc-meta">Clé de la Part 6</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">Although/Even though (concession), Therefore/As a result (conséquence), However/Nevertheless (opposition), Furthermore/In addition (ajout), Because/Since (cause). Chaque connecteur encode une relation logique précise. Apprends-les par famille, pas isolément.</div>
+        </div>
+      </div>
+
+      <div class="chap-nav">
+        <button class="chap-nav-btn" onclick="scrollTo('ch4')">← Chapitre 4</button>
+        <button class="chap-nav-btn next" onclick="scrollTo('ch6')">Chapitre 6 — Erreurs fatales →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPITRE 6 ══ -->
+<section id="ch6" class="chapter-section">
+  <div class="chapter-layout">
+    <div class="chapter-sidebar">
+      <div class="chapter-num">06</div>
+      <div class="chapter-tag">Pièges</div>
+      <div class="chapter-sidebar-title">Les erreurs qui coûtent 100 points</div>
+    </div>
+    <div class="chapter-body">
+      <h2 class="chapter-headline">Ces erreurs<br>que tout le monde<br><em>fait. Sauf toi.</em></h2>
+      <p class="chapter-lead">J'ai analysé mes premières tentatives, les retours d'autres candidats, et les patterns récurrents dans les tests officiels. Ces 8 erreurs sont responsables de 80% des points perdus inutilement.</p>
+
+      <div class="mistake-grid">
+        <div class="mistake-card">
+          <div class="mistake-x">✕</div>
+          <div class="mistake-content">
+            <div class="mistake-title">Tout lire en Part 7</div>
+            <div class="mistake-desc">Lire chaque document de bout en bout avant de regarder les questions. Tu perds en moyenne 15 minutes sur la totalité du test — c'est 15 à 20 questions que tu ne peux pas finir.</div>
+            <div class="mistake-fix">✓ Fix : Lis les questions d'abord, puis cherche les informations ciblées dans le document.</div>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-x">✕</div>
+          <div class="mistake-content">
+            <div class="mistake-title">Rester bloqué sur une question</div>
+            <div class="mistake-desc">Passer 3 minutes sur une seule question difficile. Pendant ce temps, tu aurais pu répondre à 6 questions faciles. Au TOEIC, toutes les questions valent le même nombre de points.</div>
+            <div class="mistake-fix">✓ Fix : 30 secondes max en Part 5. Si tu ne sais pas, coche une réponse et avance. Tu peux revenir si le temps le permet.</div>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-x">✕</div>
+          <div class="mistake-content">
+            <div class="mistake-title">Traduire mentalement en français</div>
+            <div class="mistake-desc">Entendre l'anglais → traduire en français → comprendre → rechoisir en anglais. Ce circuit mental double le temps de traitement et provoque des erreurs d'interprétation.</div>
+            <div class="mistake-fix">✓ Fix : Entraîne-toi à associer les mots anglais directement à des images/concepts, pas à leurs traductions françaises.</div>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-x">✕</div>
+          <div class="mistake-content">
+            <div class="mistake-title">Ignorer le contexte général</div>
+            <div class="mistake-desc">Se concentrer sur un seul mot inconnu et bloquer, alors que le contexte de la phrase permet de déduire le sens. En compréhension, le sens global prime sur les mots isolés.</div>
+            <div class="mistake-fix">✓ Fix : Si tu ne connais pas un mot, déduis son sens depuis le contexte. L'anglais a suffisamment de marqueurs contextuels pour ça.</div>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-x">✕</div>
+          <div class="mistake-content">
+            <div class="mistake-title">Choisir la réponse "trop évidente" en Part 2</div>
+            <div class="mistake-desc">ETS place souvent un mot identique dans la question et dans une mauvaise réponse pour piéger les candidats qui ne réfléchissent pas au sens.</div>
+            <div class="mistake-fix">✓ Fix : La réponse qui répète un mot de la question est souvent fausse. Cherche la cohérence de sens, pas la similarité sonore.</div>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-x">✕</div>
+          <div class="mistake-content">
+            <div class="mistake-title">Négliger la Part 5 et 6</div>
+            <div class="mistake-desc">Beaucoup de candidats focalisent sur la Part 7 (longue, visible) et bâclent les Parts 5 et 6. Erreur : 46 questions faciles et rapides qui peuvent scorer très haut si préparées correctement.</div>
+            <div class="mistake-fix">✓ Fix : Vise 90% de réussite en Part 5 et 6. C'est atteignable avec 3 semaines de pratique ciblée sur la grammaire TOEIC.</div>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-x">✕</div>
+          <div class="mistake-content">
+            <div class="mistake-title">S'entraîner sans se chronométrer</div>
+            <div class="mistake-desc">Faire des exercices "confortablement" sans contrainte de temps. Le jour J, la pression du chrono crée une performance complètement différente — et souvent décevante.</div>
+            <div class="mistake-fix">✓ Fix : Dès la semaine 3, chronométre systématiquement chaque exercice. Simule les conditions réelles du test au minimum 1 fois par semaine.</div>
+          </div>
+        </div>
+        <div class="mistake-card">
+          <div class="mistake-x">✕</div>
+          <div class="mistake-content">
+            <div class="mistake-title">Réviser la veille du test</div>
+            <div class="mistake-desc">Se bourrer de vocabulaire et de règles grammaticales la veille. Ça sature le cerveau, perturbe le sommeil, et dégrade les performances le lendemain.</div>
+            <div class="mistake-fix">✓ Fix : La veille, révision légère de 30 minutes maximum. Dîner copieux, sommeil de 8h, réveil calme. Ton cerveau reposé vaut plus que 3h de révision épuisante.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chap-nav">
+        <button class="chap-nav-btn" onclick="scrollTo('ch5')">← Chapitre 5</button>
+        <button class="chap-nav-btn next" onclick="scrollTo('ch7')">Chapitre 7 — Sprint final →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPITRE 7 ══ -->
+<section id="ch7" class="chapter-section">
+  <div class="chapter-layout">
+    <div class="chapter-sidebar">
+      <div class="chapter-num">07</div>
+      <div class="chapter-tag">Sprint final</div>
+      <div class="chapter-sidebar-title">Les 30 derniers jours</div>
+    </div>
+    <div class="chapter-body">
+      <h2 class="chapter-headline">Le dernier mois<br>est<br><em>décisif.</em></h2>
+      <p class="chapter-lead">Les 30 derniers jours avant ton test, l'objectif change. Tu ne construis plus — tu affines, tu stabilises, et tu construis la confiance mentale qui fait la différence le jour J.</p>
+
+      <div class="section-h">La feuille de route</div>
+
+      <table class="plan-table">
+        <thead>
+          <tr><th>Semaine</th><th>Focus</th><th>Objectif concret</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="week-badge">J-30 à J-22</span></td>
+            <td>Tests blancs complets</td>
+            <td>2 tests complets, conditions réelles. Identifie tes erreurs récurrentes.</td>
+          </tr>
+          <tr>
+            <td><span class="week-badge">J-21 à J-14</span></td>
+            <td>Correction chirurgicale</td>
+            <td>Travaille uniquement sur tes points faibles identifiés. Pas de révision générale.</td>
+          </tr>
+          <tr>
+            <td><span class="week-badge">J-13 à J-7</span></td>
+            <td>Consolidation</td>
+            <td>1 test blanc. Révision vocabulaire. Maintien du rythme sans surcharger.</td>
+          </tr>
+          <tr>
+            <td><span class="week-badge">J-6 à J-2</span></td>
+            <td>Décompression</td>
+            <td>Exercices courts, anglais plaisir, révision légère. Préserve ton énergie.</td>
+          </tr>
+          <tr>
+            <td><span class="week-badge">J-1</span></td>
+            <td>Repos actif</td>
+            <td>30 min de révision max. Prépare ton matériel. Dors 8h.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-h">Le jour J — protocole complet</div>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">🌅</div>
+          <div class="tip-title">Le matin du test</div>
+          <div class="tip-desc">Réveil 2h avant le test. Petit déjeuner consistant (glucose = énergie cognitive). 10 minutes d'écoute d'un podcast en anglais pour "réchauffer" ton oreille. Arrive 30 min en avance.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🧘</div>
+          <div class="tip-title">Gérer le stress</div>
+          <div class="tip-desc">La technique des 4-7-8 : inspire 4 sec, retiens 7 sec, expire 8 sec. Répète 3 fois avant le début du test. Ça abaisse le cortisol et améliore la concentration en 90 secondes.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📋</div>
+          <div class="tip-title">Pendant le Listening</div>
+          <div class="tip-desc">Utilise les pauses entre les sections pour pré-lire les questions du set suivant. Ne perds jamais une seconde de ce temps précieux. Garde ton crayon levé pour marquer immédiatement.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">⏰</div>
+          <div class="tip-title">Pendant le Reading</div>
+          <div class="tip-desc">Part 5 : 15 min. Part 6 : 10 min. Part 7 : 50 min. Regarde l'heure à chaque transition. Si en retard, accélère sur Part 5 — elle est la plus rapide à récupérer.</div>
+        </div>
+      </div>
+
+      <div class="pull-quote">"Le test TOEIC n'évalue pas ton niveau d'anglais. Il évalue ta capacité à performer sous contrainte de temps. C'est une compétence qui s'entraîne."</div>
+
+      <div class="callout">
+        <div class="callout-icon">🏆</div>
+        <div class="callout-text"><strong>La mentalité 900+ :</strong> Les candidats qui dépassent 900 ne sont pas nécessairement ceux qui ont le meilleur anglais. Ce sont ceux qui ont appris à ne pas paniquer, à gérer leur temps, et à utiliser les indices contextuels pour deviner intelligemment quand ils ne savent pas.</div>
+      </div>
+
+      <div class="chap-nav">
+        <button class="chap-nav-btn" onclick="scrollTo('ch6')">← Chapitre 6</button>
+        <button class="chap-nav-btn next" onclick="scrollTo('bonus')">Bonus — Ressources →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BONUS ══ -->
+<section id="bonus" class="chapter-section">
+  <div class="chapter-layout">
+    <div class="chapter-sidebar">
+      <div class="chapter-num" style="color:var(--gold); opacity:0.3">++</div>
+      <div class="chapter-tag">Bonus</div>
+      <div class="chapter-sidebar-title">Ressources et outils testés</div>
+    </div>
+    <div class="chapter-body">
+      <h2 class="chapter-headline">Les outils<br>que j'ai <em>vraiment</em><br>utilisés.</h2>
+      <p class="chapter-lead">Pas une liste exhaustive de tout ce qui existe — les ressources que j'ai personnellement utilisées et validées pour passer de zéro préparation formelle à 930.</p>
+
+      <div class="section-h">Ressources par catégorie</div>
+
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-type">📚 Livre officiel</div>
+          <div class="resource-name">ETS Official TOEIC Practice Book</div>
+          <div class="resource-desc">Le seul livre créé par les auteurs du test. Questions 100% fidèles au format réel. Indispensable pour les tests blancs des semaines 11 à 13.</div>
+          <span class="resource-badge badge-paid">Payant ~30$</span>
+        </div>
+        <div class="resource-card">
+          <div class="resource-type">📱 Application</div>
+          <div class="resource-name">Anki — Répétition espacée</div>
+          <div class="resource-desc">Télécharge un deck TOEIC Business Vocabulary (disponible gratuitement dans AnkiWeb). 20 cartes par jour, 10 minutes. La méthode la plus efficace pour le vocabulaire.</div>
+          <span class="resource-badge badge-free">Gratuit</span>
+        </div>
+        <div class="resource-card">
+          <div class="resource-type">🌐 Site web</div>
+          <div class="resource-name">TOEIC Trainer (toeictrainer.com)</div>
+          <div class="resource-desc">Exercices par section, explications détaillées, simulation de test. Excellent pour les Parts 5 et 6. Interface simple, efficace.</div>
+          <span class="resource-badge badge-free">Gratuit</span>
+        </div>
+        <div class="resource-card">
+          <div class="resource-type">🎧 Podcast</div>
+          <div class="resource-name">BBC Global News Podcast</div>
+          <div class="resource-desc">Accent britannique clair, vocabulaire international, durée parfaite (28 min). Idéal pour habituer ton oreille à des accents variés tout en restant dans un registre professionnel.</div>
+          <span class="resource-badge badge-free">Gratuit</span>
+        </div>
+        <div class="resource-card">
+          <div class="resource-type">📖 Lecture quotidienne</div>
+          <div class="resource-name">BBC News Business Section</div>
+          <div class="resource-desc">Articles courts, vocabulaire business réel, structure claire. 15 minutes par jour améliore significativement ta vitesse de lecture et ton lexique en Reading.</div>
+          <span class="resource-badge badge-free">Gratuit</span>
+        </div>
+        <div class="resource-card">
+          <div class="resource-type">🤖 IA comme coach</div>
+          <div class="resource-name">Claude / ChatGPT — Tuteur personnel</div>
+          <div class="resource-desc">Génère des exercices de Part 5 personnalisés, explique les erreurs grammaticales, crée des mini-dialogues business pour simuler la Part 3. Zéro coût si tu as déjà un abonnement.</div>
+          <span class="resource-badge badge-free">Selon abonnement</span>
+        </div>
+      </div>
+
+      <div class="section-h">Utiliser l'IA pour préparer le TOEIC</div>
+
+      <div class="accordion">
+        <div class="acc-item open">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">01</div>
+            <div class="acc-label">Générer des exercices de Part 5</div>
+            <div class="acc-meta">Grammaire et vocabulaire à la demande</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">
+            Prompt : <em>"Génère 10 questions de TOEIC Part 5 centrées sur [présent perfect vs simple past / prépositions / adverbes vs adjectifs]. Donne les 4 options de réponse, indique la bonne réponse et explique pourquoi les autres sont incorrectes."</em><br><br>
+            Tu peux pratiquer la grammaire précise qui te pose problème, infiniment, sans jamais manquer de matériel.
+          </div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">02</div>
+            <div class="acc-label">Simuler une conversation de Part 3</div>
+            <div class="acc-meta">Pour l'entraînement à l'anticipation</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">
+            Prompt : <em>"Écris une conversation téléphonique professionnelle entre un client et un service client d'une compagnie aérienne (150 mots). Ensuite, pose-moi 3 questions TOEIC Part 3 sur cette conversation avec 4 options chacune."</em><br><br>
+            Idéal pour travailler la compréhension de dialogues business sans avoir à acheter des livres supplémentaires.
+          </div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-trigger" onclick="tog(this)">
+            <div class="acc-num">03</div>
+            <div class="acc-label">Analyser tes erreurs</div>
+            <div class="acc-meta">Coach correcteur instantané</div>
+            <div class="acc-icon">+</div>
+          </div>
+          <div class="acc-body">
+            Prompt : <em>"Voici une question de TOEIC Part 5 que j'ai ratée : [copie la question et les 4 options]. J'ai choisi [ta réponse] mais la bonne réponse est [bonne réponse]. Explique-moi en détail pourquoi ma réponse est incorrecte et la règle grammaticale à retenir."</em><br><br>
+            Ce type de feedback personnalisé vaut n'importe quel cours particulier.
+          </div>
+        </div>
+      </div>
+
+      <div class="gold-box">
+        <div class="callout-icon">🏅</div>
+        <div class="callout-text"><strong>Un dernier mot :</strong> 930 points depuis Ouagadougou, sans école bilingue, sans coaching à 200 000 FCFA, sans voyage linguistique. Juste une méthode, de la régularité, et la conviction que le TOEIC est un test que tu peux maîtriser si tu comprends ses règles. Ce guide, c'est la carte. La route, c'est toi qui la fais.</div>
+      </div>
+
+      <div style="text-align:center; padding:48px 0 20px;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:var(--gold); margin-bottom:4px;">Good luck.</div>
+        <div style="font-size:14px; color:var(--ink-3);">Tu as tout ce qu'il faut. Maintenant travaille.</div>
+      </div>
+
+      <div class="chap-nav">
+        <button class="chap-nav-btn" onclick="scrollTo('ch7')">← Chapitre 7</button>
+        <button class="chap-nav-btn next" onclick="scrollTo('hero')">↑ Retour au début</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-wrap -->
+
+<footer class="site-footer">
+  <div class="footer-name">Mélissa Ouedraogo</div>
+  <div class="footer-title">Ingénieure en Systèmes Numériques · Burkina Faso</div>
+  <div class="footer-score">930 / 990</div>
+  <p class="footer-note">Ce guide est écrit par quelqu'un qui a vécu cette préparation depuis l'Afrique francophone, sans ressources coûteuses. Si ça a marché pour moi, ça peut marcher pour toi.</p>
+</footer>
+
+<script>
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const offset = document.getElementById('topnav').offsetHeight + 20;
+  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior:'smooth' });
+}
+
+const sections = ['hero','ch1','ch2','ch3','ch4','ch5','ch6','ch7','bonus'];
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = Math.round((scrollY / docH) * 100);
+  document.getElementById('readBar').style.width = pct + '%';
+  document.getElementById('topnav').classList.toggle('scrolled', scrollY > 20);
+  let current = 'hero';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top <= 80) current = id;
+  });
+  navLinks.forEach(a => {
+    const oc = a.getAttribute('onclick') || '';
+    a.classList.toggle('active', oc.includes(`'${current}'`));
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.chapter-section').forEach(s => observer.observe(s));
+
+function tog(trigger) { trigger.closest('.acc-item').classList.toggle('open'); }
+</script>
+</body>
+</html>
